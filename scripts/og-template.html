@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1280, height=720" />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <style>
+      :root {
+        --bg: #050505;
+        --text: #fafafa;
+        --text-muted: #a1a1aa;
+        --font-display: "Syne", system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-display);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        color-scheme: dark;
+      }
+
+      .grain,
+      .vignette {
+        pointer-events: none;
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+      }
+
+      .grain {
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      .vignette {
+        background:
+          radial-gradient(ellipse 140% 110% at 50% 46%, rgba(255, 255, 255, 0.014), transparent 78%),
+          radial-gradient(ellipse 120% 120% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.38) 100%);
+      }
+
+      .shell {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1280px;
+        height: 720px;
+        padding: 64px;
+      }
+
+      .brand {
+        text-align: center;
+      }
+
+      .wordmark {
+        margin: 0;
+        font-size: 220px;
+        font-weight: 600;
+        line-height: 0.95;
+        letter-spacing: -0.045em;
+      }
+
+      .credit {
+        margin: 28px 0 0;
+        font-family: var(--font-mono);
+        font-size: 30px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--text-muted);
+      }
+
+      .credit__name {
+        color: color-mix(in oklab, var(--text) 82%, var(--text-muted));
+        font-weight: 600;
+      }
+
+      .tagline {
+        margin: 34px auto 0;
+        max-width: 44rem;
+        font-size: 46px;
+        font-weight: 500;
+        line-height: 1.35;
+        letter-spacing: -0.01em;
+        color: var(--text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="shell">
+      <header class="brand">
+        <h1 class="wordmark">Cilto</h1>
+        <p class="credit">by <span class="credit__name">Terence Goh</span></p>
+        <p class="tagline">Designed to let life breathe.</p>
+      </header>
+    </div>
+  </body>
+</html>

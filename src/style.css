@@ -1,0 +1,389 @@
+:root {
+  --bg: #050505;
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+  --slofi-glow: #c4a574;
+  --slofi-glow-soft: #e8d4b0;
+  --travyen-glow: #3d7a66;
+  --travyen-ember: #db8856;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --pad: clamp(1rem, 3.5vw, 2.75rem);
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.grain,
+.vignette {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.grain {
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.vignette {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 40%, rgba(255, 255, 255, 0.03), transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding:
+    max(var(--pad), env(safe-area-inset-top))
+    max(var(--pad), env(safe-area-inset-right))
+    max(var(--pad), env(safe-area-inset-bottom))
+    max(var(--pad), env(safe-area-inset-left));
+}
+
+.stage {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  align-content: center;
+  gap: clamp(1.35rem, 3.5vh, 2.75rem);
+  width: min(100%, 68rem);
+  margin-inline: auto;
+}
+
+.brand {
+  text-align: center;
+}
+
+.wordmark {
+  margin: 0;
+  font-size: clamp(3rem, 11vw, 6.5rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.credit {
+  margin: clamp(0.55rem, 1.4vh, 0.85rem) 0 0;
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.credit__name {
+  color: color-mix(in oklab, var(--text) 82%, var(--text-muted));
+  font-weight: 600;
+}
+
+.tagline {
+  margin: clamp(0.55rem, 1.5vh, 0.9rem) auto 0;
+  max-width: 28rem;
+  font-size: clamp(0.95rem, 2.1vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
+}
+
+.portals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+.portal {
+  --portal-base: #0a0908;
+  position: relative;
+  display: grid;
+  justify-items: start;
+  align-content: space-between;
+  gap: 0.65rem;
+  min-height: clamp(220px, 34vh, 340px);
+  padding: clamp(1.25rem, 3vh, 1.85rem);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--portal-base);
+  color: var(--text);
+  text-decoration: none;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform 0.35s var(--ease),
+    border-color 0.35s var(--ease);
+}
+
+/* Soft aura — dual blooms (logo + base), lighter blur so they stay distinct */
+.portal::before {
+  content: "";
+  position: absolute;
+  inset: -28%;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(28px);
+  opacity: 0.9;
+  transform: translateZ(0);
+}
+
+/* Fine diagonal pinstripe — Aura-style texture, kept very quiet */
+.portal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  background: repeating-linear-gradient(
+    -18deg,
+    transparent 0 10px,
+    rgba(255, 255, 255, 0.028) 10px 11px
+  );
+  mask-image: linear-gradient(to bottom, black 0%, transparent 88%);
+}
+
+.portal > * {
+  position: relative;
+  z-index: 1;
+}
+
+.portal--slofi {
+  --portal-base: #0c0a08;
+  border-color: color-mix(in oklab, var(--slofi-glow) 22%, rgba(255, 255, 255, 0.06));
+}
+
+.portal--slofi::before {
+  background:
+    radial-gradient(
+      circle at 50% 88%,
+      color-mix(in oklab, var(--slofi-glow) 70%, transparent) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 18% 8%,
+      color-mix(in oklab, var(--slofi-glow-soft) 55%, transparent) 0%,
+      transparent 48%
+    );
+}
+
+.portal--travyen {
+  --portal-base: #070a09;
+  border-color: color-mix(in oklab, var(--travyen-glow) 28%, rgba(255, 255, 255, 0.06));
+}
+
+.portal--travyen::before {
+  background:
+    radial-gradient(
+      circle at 50% 88%,
+      color-mix(in oklab, var(--travyen-ember) 62%, transparent) 0%,
+      color-mix(in oklab, var(--travyen-glow) 40%, transparent) 28%,
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 18% 8%,
+      color-mix(in oklab, var(--travyen-glow) 50%, transparent) 0%,
+      transparent 48%
+    );
+}
+
+.portal:hover,
+.portal:focus-visible {
+  transform: translateY(-4px);
+}
+
+.portal--slofi:hover,
+.portal--slofi:focus-visible {
+  border-color: color-mix(in oklab, var(--slofi-glow) 40%, rgba(255, 255, 255, 0.1));
+}
+
+.portal--travyen:hover,
+.portal--travyen:focus-visible {
+  border-color: color-mix(in oklab, var(--travyen-ember) 38%, rgba(255, 255, 255, 0.1));
+}
+
+.portal:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.portal__logo {
+  width: clamp(5.5rem, 12vw, 7.5rem);
+  height: clamp(5.5rem, 12vw, 7.5rem);
+  object-fit: contain;
+  background: transparent;
+  image-rendering: auto;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
+}
+
+.portal__name {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.portal__line {
+  max-width: 18rem;
+  font-size: clamp(0.85rem, 1.8vw, 0.98rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: color-mix(in oklab, white 68%, transparent);
+}
+
+.portal__go {
+  margin-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, white 58%, transparent);
+  transition: color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.portal:hover .portal__go,
+.portal:focus-visible .portal__go {
+  color: var(--text);
+  transform: translateX(3px);
+}
+
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+html.js body.is-ready .reveal {
+  animation: rise 0.7s var(--ease) both;
+}
+
+html.js body.is-ready .reveal[data-reveal="0"] { animation-delay: 0.04s; }
+html.js body.is-ready .reveal[data-reveal="1"] { animation-delay: 0.12s; }
+html.js body.is-ready .reveal[data-reveal="2"] { animation-delay: 0.2s; }
+html.js body.is-ready .reveal[data-reveal="3"] { animation-delay: 0.3s; }
+html.js body.is-ready .reveal[data-reveal="4"] { animation-delay: 0.4s; }
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 900px) {
+  .stage {
+    gap: clamp(1.75rem, 4vh, 3rem);
+  }
+
+  .portals {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .portal {
+    min-height: clamp(260px, 38vh, 360px);
+  }
+}
+
+@media (max-height: 720px) {
+  .wordmark {
+    font-size: clamp(2.5rem, 9vw, 4.75rem);
+  }
+
+  .portal {
+    min-height: clamp(180px, 30vh, 240px);
+    padding: 1.1rem 1.25rem;
+  }
+
+  .portal__logo {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+}
+
+@media (max-height: 600px) {
+  .tagline {
+    display: none;
+  }
+
+  .stage {
+    gap: 1rem;
+  }
+
+  .portal {
+    min-height: 9.5rem;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 1rem;
+    align-content: center;
+  }
+
+  .portal__logo {
+    grid-row: 1 / span 2;
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .portal__name {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .portal__go {
+    grid-column: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  html.js body.is-ready .reveal {
+    animation: none;
+  }
+
+  .portal,
+  .portal__go {
+    transition: none;
+  }
+
+  .portal:hover,
+  .portal:focus-visible {
+    transform: none;
+  }
+
+  .portal::before {
+    filter: blur(22px);
+  }
+}

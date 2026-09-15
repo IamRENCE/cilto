@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Cilto is a small studio by Terence Goh — home of Slofi, Travyen, and whatever comes next. Designed to let life breathe."
+    />
+    <meta name="author" content="Terence Goh" />
+    <meta name="theme-color" content="#050505" />
+    <meta property="og:title" content="Cilto" />
+    <meta
+      property="og:description"
+      content="A quiet studio by Terence Goh. Designed to let life breathe."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cilto.dev/" />
+    <meta property="og:image" content="https://cilto.dev/og.png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta property="og:image:alt" content="Cilto — by Terence Goh. Designed to let life breathe." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cilto" />
+    <meta
+      name="twitter:description"
+      content="A quiet studio by Terence Goh. Designed to let life breathe."
+    />
+    <meta name="twitter:image" content="https://cilto.dev/og.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Syne:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cilto · by Terence Goh</title>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <div class="shell">
+      <main class="stage">
+        <header class="brand" aria-labelledby="brand-name">
+          <h1 id="brand-name" class="wordmark reveal" data-reveal="0">Cilto</h1>
+          <p class="credit reveal" data-reveal="1">
+            by <span class="credit__name">Terence Goh</span>
+          </p>
+          <p class="tagline reveal" data-reveal="2">
+            Designed to let life breathe.
+          </p>
+        </header>
+
+        <nav class="portals" aria-label="Apps">
+          <a
+            class="portal portal--slofi reveal"
+            data-reveal="3"
+            href="https://slofi.cilto.dev"
+          >
+            <img
+              class="portal__logo"
+              src="/apps/slofi.png"
+              alt=""
+              width="256"
+              height="256"
+              decoding="async"
+              fetchpriority="high"
+            />
+            <span class="portal__name">Slofi</span>
+            <span class="portal__line">Cash flow, balance sheet, and analysis.</span>
+            <span class="portal__go">Open →</span>
+          </a>
+
+          <a
+            class="portal portal--travyen reveal"
+            data-reveal="4"
+            href="https://travyen.cilto.dev"
+          >
+            <img
+              class="portal__logo"
+              src="/apps/travyen.png"
+              alt=""
+              width="256"
+              height="256"
+              decoding="async"
+            />
+            <span class="portal__name">Travyen</span>
+            <span class="portal__line">Plan trips together. Carry them offline.</span>
+            <span class="portal__go">Open →</span>
+          </a>
+        </nav>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
