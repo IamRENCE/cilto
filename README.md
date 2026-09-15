@@ -1,6 +1,6 @@
-# cilto.dev
+# Cilto
 
-Single-viewport studio hub by **Terence Goh** for [Slofi](https://slofi.cilto.dev) and [Travyen](https://travyen.cilto.dev).
+Single-viewport studio hub for Cilto apps [Slofi](https://slofi.cilto.dev), [Travyen](https://travyen.cilto.dev) and other future ones.
 
 ## Stack
 
