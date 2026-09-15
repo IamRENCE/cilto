@@ -1,4 +1,9 @@
+import { inject } from "@vercel/analytics";
+import { injectSpeedInsights } from "@vercel/speed-insights";
 import "./style.css";
+
+inject();
+injectSpeedInsights();
 
 document.documentElement.classList.add("js");
 
