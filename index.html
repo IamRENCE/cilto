@@ -9,24 +9,25 @@
     />
     <meta name="author" content="Terence Goh" />
     <meta name="theme-color" content="#050505" />
-    <meta property="og:title" content="Cilto" />
+    <link rel="canonical" href="https://www.cilto.dev/" />
+    <meta property="og:title" content="Cilto — studio by Terence Goh" />
     <meta
       property="og:description"
-      content="A quiet studio by Terence Goh. Designed to let life breathe."
+      content="A quiet studio by Terence Goh. Home of Slofi and Travyen. Designed to let life breathe."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cilto.dev/" />
-    <meta property="og:image" content="https://cilto.dev/og.png" />
+    <meta property="og:url" content="https://www.cilto.dev/" />
+    <meta property="og:image" content="https://www.cilto.dev/og.png" />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="720" />
     <meta property="og:image:alt" content="Cilto — by Terence Goh. Designed to let life breathe." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Cilto" />
+    <meta name="twitter:title" content="Cilto — studio by Terence Goh" />
     <meta
       name="twitter:description"
-      content="A quiet studio by Terence Goh. Designed to let life breathe."
+      content="A quiet studio by Terence Goh. Home of Slofi and Travyen. Designed to let life breathe."
     />
-    <meta name="twitter:image" content="https://cilto.dev/og.png" />
+    <meta name="twitter:image" content="https://www.cilto.dev/og.png" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
@@ -38,6 +39,37 @@
       rel="stylesheet"
     />
     <title>Cilto</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.cilto.dev/#website",
+            "url": "https://www.cilto.dev/",
+            "name": "Cilto",
+            "description": "Cilto is a small studio by Terence Goh — home of Slofi, Travyen, and whatever comes next.",
+            "publisher": { "@id": "https://www.cilto.dev/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://www.cilto.dev/#organization",
+            "name": "Cilto",
+            "url": "https://www.cilto.dev/",
+            "logo": "https://www.cilto.dev/favicon-32.png",
+            "founder": {
+              "@type": "Person",
+              "name": "Terence Goh"
+            },
+            "sameAs": [
+              "https://slofi.cilto.dev/",
+              "https://travyen.cilto.dev/"
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -70,7 +102,7 @@
               decoding="async"
               fetchpriority="high"
             />
-            <span class="portal__name">Slofi</span>
+            <h2 class="portal__name">Slofi</h2>
             <span class="portal__line">Cash flow, balance sheet, and analysis.</span>
             <span class="portal__go">Open →</span>
           </a>
@@ -88,7 +120,7 @@
               height="256"
               decoding="async"
             />
-            <span class="portal__name">Travyen</span>
+            <h2 class="portal__name">Travyen</h2>
             <span class="portal__line">Plan trips together. Carry them offline.</span>
             <span class="portal__go">Open →</span>
           </a>
